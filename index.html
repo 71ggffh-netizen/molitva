@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b1026">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="Праздничная молитва">
+<meta property="og:description" content="10 праздничных судеб ждут владельца.">
+<title>Праздничная молитва</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Manrope:wght@400;600;800&display=swap">
+<style>
+/* Layout: one phone-height night sky; scenes stack on top of a canvas starfield. */
+:root{
+  --sky:#0b1026;       /* ночное небо */
+  --sky-2:#1b2350;
+  --ink:#f3ecdc;       /* основной текст */
+  --dim:#a9b0d6;
+  --gold:#e8b65a;      /* 5★ */
+  --gold-2:#fff1c9;
+  --purple:#b07ce8;    /* 4★ */
+  --blue:#6e9cf0;      /* 3★ */
+  --f-title:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+  --f-body:"Manrope","Helvetica Neue",Arial,sans-serif;
+  color-scheme:dark;
+}
+[hidden]{display:none!important}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;background:var(--sky);color:var(--ink)}
+body{font-family:var(--f-body);overflow:hidden;-webkit-tap-highlight-color:transparent;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+#app{position:relative;height:100%;max-width:480px;margin:0 auto;overflow:hidden;
+  background:radial-gradient(120% 70% at 50% 0%,#2a3477 0%,var(--sky-2) 35%,var(--sky) 75%)}
+#sky{position:absolute;inset:0;width:100%;height:100%}
+
+.scene{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;gap:16px;text-align:center;
+  padding:calc(env(safe-area-inset-top,0px) + 22px) 18px calc(env(safe-area-inset-bottom,0px) + 22px)}
+.scene.on{display:flex;animation:fade .5s ease-out both}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+
+.eyebrow{font:600 11px/1 var(--f-body);letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
+h1,h2{margin:0;font-family:var(--f-title);font-weight:700;letter-spacing:.01em;text-wrap:balance}
+h1{font-size:clamp(40px,12vw,54px);line-height:.98}
+h2{font-size:clamp(30px,9vw,38px);line-height:1.05}
+.lead{margin:0;max-width:34ch;font-size:15px;line-height:1.55;color:var(--dim)}
+
+.btn{position:relative;width:100%;max-width:340px;border:0;border-radius:999px;padding:16px 22px;
+  background:linear-gradient(180deg,#fff6dc,#ecd29a);color:#3b2a10;font:800 16px/1 var(--f-body);letter-spacing:.04em;
+  box-shadow:0 0 0 2px #fff3 inset,0 10px 30px #e8b65a40}
+.btn:active{transform:scale(.98)}
+.btn .cost{display:inline-flex;align-items:center;gap:6px;margin-left:8px;padding-left:10px;border-left:1px solid #3b2a1033;font-weight:600}
+.btn.ghost{background:transparent;color:var(--dim);box-shadow:inset 0 0 0 1px #ffffff2e}
+
+/* ---------- banner ---------- */
+#banner{justify-content:center}
+.card-banner{position:relative;width:100%;max-width:400px;border-radius:22px;padding:22px 20px 20px;overflow:hidden;text-align:left;
+  background:linear-gradient(160deg,#3a2a5e 0%,#24204a 45%,#121735 100%);
+  box-shadow:0 0 0 1px #e8b65a55 inset,0 30px 60px #0009}
+.card-banner::before{content:"";position:absolute;right:-60px;top:-60px;width:240px;height:240px;border-radius:50%;
+  background:radial-gradient(circle,#e8b65a55,#e8b65a00 70%)}
+.featured{position:relative;display:flex;gap:16px;align-items:center;margin-top:16px}
+.silhouette{flex:0 0 auto;width:96px;height:124px;border-radius:14px;display:grid;place-items:center;
+  background:radial-gradient(circle at 50% 35%,#fff1c955,#e8b65a22 45%,#0000 70%),linear-gradient(180deg,#5a4320,#2b1f0e);
+  box-shadow:0 0 0 1px #e8b65a99 inset,0 0 30px #e8b65a55;font:700 54px/1 var(--f-title);color:var(--gold-2);text-shadow:0 0 18px var(--gold)}
+.featured .stars{color:var(--gold);letter-spacing:2px;font-size:14px}
+.featured b{display:block;margin:4px 0 6px;font:700 22px/1.1 var(--f-title)}
+.featured span{display:block;font-size:13px;line-height:1.45;color:var(--dim)}
+.rates{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.rates i{font-style:normal;font-size:11px;padding:6px 9px;border-radius:999px;background:#ffffff12;color:var(--dim)}
+.wallet{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--dim)}
+.wallet b{color:var(--ink)}
+.fate{width:22px;height:22px;flex:0 0 auto}
+
+/* ---------- meteor ---------- */
+#wish{padding:0;background:#05071299}
+.meteor{position:absolute;left:-30%;top:8%;width:160%;height:6px;transform-origin:left center;transform:rotate(28deg) translateX(-110%);
+  background:linear-gradient(90deg,#0000,var(--m) 70%,#fff 100%);filter:drop-shadow(0 0 12px var(--m)) drop-shadow(0 0 30px var(--m));border-radius:6px}
+.meteor.go{animation:meteor 1.5s cubic-bezier(.55,0,.25,1) forwards}
+@keyframes meteor{to{transform:rotate(28deg) translateX(30%)}}
+.flash{position:absolute;inset:0;background:radial-gradient(circle at 70% 70%,var(--m),#0000 60%);opacity:0}
+.flash.go{animation:flash 1.2s ease-out .95s forwards}
+@keyframes flash{30%{opacity:.9}100%{opacity:0}}
+
+/* ---------- item reveal ---------- */
+#reveal{justify-content:center;gap:12px}
+#reveal.r3{--r:var(--blue)} #reveal.r4{--r:var(--purple)} #reveal.r5{--r:var(--gold)}
+.counter{position:absolute;top:calc(env(safe-area-inset-top,0px) + 18px);left:18px;font-size:12px;letter-spacing:.2em;color:var(--dim)}
+.skip{position:absolute;top:calc(env(safe-area-inset-top,0px) + 10px);right:12px;background:none;border:0;color:var(--dim);font-size:13px;padding:8px}
+.glow{position:relative;width:min(70vw,260px);aspect-ratio:1;display:grid;place-items:center}
+.glow::before{content:"";position:absolute;inset:-20%;border-radius:50%;background:radial-gradient(circle,var(--r) 0%,#0000 65%);opacity:.55;animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.08);opacity:.75}}
+.glow svg{position:relative;width:62%;height:62%;color:#fff;filter:drop-shadow(0 0 14px var(--r))}
+.item-in{animation:itemIn .7s cubic-bezier(.2,1.4,.4,1) both}
+@keyframes itemIn{from{transform:scale(.4);opacity:0}to{transform:none;opacity:1}}
+.rstars{color:var(--r);font-size:22px;letter-spacing:4px;min-height:1.2em;text-shadow:0 0 12px var(--r)}
+.rstars i{display:inline-block;font-style:normal;opacity:0;animation:starIn .3s ease-out forwards}
+@keyframes starIn{from{transform:scale(2);opacity:0}to{transform:none;opacity:1}}
+.itype{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--r)}
+#reveal h2{max-width:16ch}
+.idesc{margin:0;max-width:32ch;font-size:15px;line-height:1.55;color:var(--ink);opacity:.9;min-height:4.6em}
+.tapnext{font-size:12px;color:var(--dim);letter-spacing:.06em;opacity:0;transition:opacity .4s}
+.tapnext.on{opacity:1}
+
+/* ---------- summary ---------- */
+#summary{justify-content:flex-start;overflow-y:auto}
+.grid{width:100%;max-width:420px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.cell{border:0;border-radius:14px;padding:12px 10px 10px;display:flex;flex-direction:column;align-items:center;gap:6px;min-width:0;
+  background:linear-gradient(180deg,#ffffff10,#ffffff05);box-shadow:inset 0 0 0 1px var(--c)}
+.cell svg{width:40px;height:40px;color:#fff;filter:drop-shadow(0 0 8px var(--c))}
+.cell b{font:600 13px/1.25 var(--f-body);text-wrap:balance}
+.cell i{font-style:normal;font-size:11px;letter-spacing:2px;color:var(--c)}
+.cell.r5{grid-column:1/-1;padding:16px;--c:var(--gold);background:linear-gradient(180deg,#e8b65a26,#e8b65a08)}
+.cell.r5 b{font:700 22px/1.1 var(--f-title)}
+.cell.r4{--c:var(--purple)} .cell.r3{--c:var(--blue)}
+
+/* ---------- letter ---------- */
+#letter{justify-content:flex-start;overflow-y:auto}
+.paper{width:100%;max-width:420px;border-radius:18px;padding:24px 20px;text-align:left;
+  background:linear-gradient(180deg,#1d2552ee,#141a3cee);box-shadow:inset 0 0 0 1px #e8b65a55,0 20px 50px #0008}
+.paper p{margin:0 0 12px;font-size:15.5px;line-height:1.6}
+.paper p:last-child{margin:0}
+.sign{margin-top:16px!important;font:700 26px/1 var(--f-title)!important;color:var(--gold)}
+.ar{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;background:#ffffff0d;box-shadow:inset 0 0 0 1px #ffffff1c;font-size:13px;color:var(--dim)}
+.ar b{font:700 20px/1 var(--f-title);color:var(--ink)}
+.ar em{font-style:normal;color:var(--gold);font-weight:800}
+
+#modal{position:absolute;inset:0;z-index:20;display:none;align-items:center;justify-content:center;padding:24px;background:#050712e6}
+#modal.on{display:flex}
+#modal .box{max-width:360px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center}
+#modal svg{width:90px;height:90px;color:#fff}
+
+#mute{position:absolute;z-index:30;top:calc(env(safe-area-inset-top,0px) + 10px);right:12px;width:36px;height:36px;border-radius:50%;
+  border:1px solid #ffffff2e;background:#0006;display:grid;place-items:center;padding:0}
+#mute svg{width:17px;height:17px}
+#mute .off{display:none} #mute.muted .on{display:none} #mute.muted .off{display:block}
+#reveal .skip{right:56px}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+<div id="app">
+  <canvas id="sky" aria-hidden="true"></canvas>
+  <button id="mute" aria-label="Выключить звук">
+    <svg class="on" viewBox="0 0 24 24" fill="none" stroke="#f3ecdc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg>
+    <svg class="off" viewBox="0 0 24 24" fill="none" stroke="#f3ecdc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M17 9l5 6M22 9l-5 6"/></svg>
+  </button>
+
+  <!-- 1. Banner -->
+  <section class="scene" id="banner">
+    <div class="eyebrow">Событие · только сегодня</div>
+    <h1>Праздничная молитва</h1>
+    <div class="card-banner">
+      <div class="eyebrow" style="letter-spacing:.2em">Шанс 5★ повышен</div>
+      <div class="featured">
+        <div class="silhouette">?</div>
+        <div>
+          <div class="stars">★★★★★</div>
+          <b>Секретный предмет</b>
+          <span>Выпадает только в день рождения. Гарант на десятой крутке: у именинников свои правила.</span>
+        </div>
+      </div>
+      <div class="rates"><i>5★ · 1 шт.</i><i>4★ · 3 шт.</i><i>3★ · 6 шт.</i><i>Скип диалогов: нет</i></div>
+    </div>
+    <div class="wallet" id="wallet">
+      <svg class="fate" viewBox="0 0 24 24" fill="none" stroke="#e8b65a" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 5l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="#e8b65a33"/></svg>
+      <span>Праздничные судьбы: <b id="fates">10</b> · подарок от Серёжи</span>
+    </div>
+    <button class="btn" id="go">Молитва ×10 <span class="cost">10 судеб</span></button>
+    <button class="btn ghost" id="toSummary" hidden>Мои предметы</button>
+  </section>
+
+  <!-- 2. Meteor -->
+  <section class="scene" id="wish">
+    <div class="meteor" id="meteor"></div>
+    <div class="flash" id="flashm"></div>
+  </section>
+
+  <!-- 3. Item reveal -->
+  <section class="scene" id="reveal">
+    <div class="counter" id="counter">1 / 10</div>
+    <button class="skip" id="skip">Пропустить</button>
+    <div class="glow" id="glow"></div>
+    <div class="rstars" id="rstars"></div>
+    <div class="itype" id="itype"></div>
+    <h2 id="iname"></h2>
+    <p class="idesc" id="idesc"></p>
+    <div class="tapnext" id="tapnext">Нажми, чтобы продолжить</div>
+  </section>
+
+  <!-- 4. Summary -->
+  <section class="scene" id="summary">
+    <div class="eyebrow">Итоги молитвы</div>
+    <h2>Добыто за 10 круток</h2>
+    <div class="grid" id="grid"></div>
+    <button class="btn" id="toLetter">Прочитать письмо</button>
+  </section>
+
+  <!-- 5. Letter -->
+  <section class="scene" id="letter">
+    <div class="eyebrow">Письмо от Серёжи</div>
+    <h1>С днём рождения, Влад!</h1>
+    <div class="ar">Ранг приключений <b>57 → <em>58</em></b> неофициально</div>
+    <div class="paper" id="paper"></div>
+    <button class="btn ghost" id="again">Посмотреть молитву ещё раз</button>
+  </section>
+
+  <div id="modal" role="dialog" aria-label="Предмет">
+    <div class="box"><div id="mIcon"></div><div class="rstars" id="mStars"></div><h2 id="mName"></h2><p class="lead" id="mDesc" style="color:var(--ink)"></p><button class="btn ghost" id="mClose">Закрыть</button></div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   НАСТРОЙКИ
+   ============================================================ */
+const CONFIG = {
+  name: "Влад",
+  from: "Серёжа",
+  letter: [
+    "Влад, с днём рождения!",
+    "Мы виделись вживую всего один раз, а вечер получился такой, что мак до сих пор вспоминает. Карьерный, весёлый и до грани. Спасибо за него.",
+    "Желаю, чтобы своё дело росло и клиенты сами находили тебя. Лендинг с меня, это не забыто. Чтобы на парах группы приходили, сдавали домашки и не присылали файлы с матами. А если и присылают, чтобы у тебя оставались силы смеяться.",
+    "Чтобы шестидесятый ранг пришёл сам собой, а глава про Снежную вышла без багов и без no-skip диалогов.",
+    "И за тобой ещё онбординг в пиво Москвы. Жду маршрут."
+  ]
+};
+// 10 предметов: показываются по порядку, 5★ последним. icon — ключ из ICONS ниже.
+const ITEMS = [
+  { r: 3, type: "Расходник", icon: "sheet", name: "Ведомость, заполненная с первого раза",
+    desc: "Редкий артефакт. Встречается в Дукате по пятницам после 19:00. Пока ты его заполняешь, гость уже на Маяковской." },
+  { r: 3, type: "Мусор", icon: "slides", name: "ИИ-презентация второкурсника",
+    desc: "Сгенерирована за 40 секунд, сдана с хамством. Источники: «интернет». Подходит как подставка под пиво." },
+  { r: 3, type: "Транспорт", icon: "train", name: "Место у окна в «Иволге»",
+    desc: "D4, полупустой вагон, рядом розетка. Восстанавливает всю энергию по дороге домой и не даёт скучать по суете." },
+  { r: 3, type: "Аналитика", icon: "chart", name: "Пульс-опрос CSAT",
+    desc: "Показывает, понравилось ли студентам. Ни на что не влияет: важно, как они сдадут экзамен." },
+  { r: 3, type: "Расходник", icon: "skip", name: "Скип диалога",
+    desc: "Пропускает один no-skip диалог. Работает только во сне." },
+  { r: 3, type: "Снаряжение", icon: "mic", name: "Диктофон на полную громкость",
+    desc: "Ноутбук на максимум, телефон рядом. Первое доказательство в любом споре. Звонки теперь на запись." },
+  { r: 4, type: "Документ", icon: "law", name: "Досудебная претензия",
+    desc: "Требование: два оклада. Можно поторговаться за три. Суд идёт долго, поэтому компании обычно соглашаются раньше." },
+  { r: 4, type: "Обещание", icon: "laptop", name: "Лендинг для ИП",
+    desc: "Выдан Серёжей 26 сентября. Мак для разработки уже куплен, новый. Активируется, когда пришлёшь референс сайта." },
+  { r: 4, type: "Локация", icon: "cider", name: "Сидрерия у ЦУ",
+    desc: "Открыта для посещения. Пятница, после пар, «в стиле лучшего нетворкинга». Вещи берём сразу с собой." },
+  { r: 5, type: "Легендарное событие", icon: "beer", name: "Онбординг в пиво Москвы",
+    desc: "Ты ведёшь, я иду следом. Маршрут твой, первый раунд за мной. Три-четыре места за вечер, как в Краснодаре. Ноутбуки оставляем дома." }
+];
+
+/* line icons, 48×48 */
+const ICONS = {
+  sheet: '<rect x="11" y="6" width="26" height="36" rx="3"/><path d="M17 15h14M17 21h14M17 27h9M17 33h6"/><path d="M28 31l3 3 6-7"/>',
+  slides: '<rect x="6" y="9" width="36" height="24" rx="3"/><path d="M24 33v7M17 40h14M13 25l6-7 5 5 4-4 7 6"/><circle cx="34" cy="15" r="2"/>',
+  train: '<rect x="9" y="7" width="30" height="30" rx="8"/><rect x="14" y="13" width="20" height="10" rx="2"/><circle cx="17" cy="30" r="2"/><circle cx="31" cy="30" r="2"/><path d="M15 37l-4 5M33 37l4 5"/>',
+  chart: '<path d="M8 40h32"/><rect x="11" y="26" width="6" height="12" rx="1"/><rect x="21" y="18" width="6" height="20" rx="1"/><rect x="31" y="10" width="6" height="28" rx="1"/>',
+  skip: '<path d="M10 12l14 12-14 12z"/><path d="M24 12l14 12-14 12z"/><path d="M40 11v26"/>',
+  mic: '<rect x="18" y="6" width="12" height="22" rx="6"/><path d="M12 22a12 12 0 0 0 24 0M24 34v8M17 42h14"/>',
+  law: '<path d="M24 7v34M14 41h20M10 13h28"/><path d="M10 13l-5 12a5 5 0 0 0 10 0zM38 13l-5 12a5 5 0 0 0 10 0z"/>',
+  laptop: '<rect x="10" y="10" width="28" height="19" rx="2"/><path d="M5 35h38l-3 4H8z"/><path d="M15 16h10M15 21h18"/>',
+  cider: '<path d="M14 9h20l-3 30H17z"/><path d="M15 18h18"/><circle cx="21" cy="25" r="1.4"/><circle cx="26" cy="30" r="1.4"/><circle cx="23" cy="34" r="1.2"/><path d="M27 6c2 0 4 1 4 3"/>',
+  beer: '<path d="M12 14h20v26a3 3 0 0 1-3 3H15a3 3 0 0 1-3-3z"/><path d="M32 19h4a4 4 0 0 1 4 4v6a4 4 0 0 1-4 4h-4"/><path d="M11 14c0-5 4-8 8-6 2-3 8-3 10 0 4-1 6 3 4 6"/><path d="M18 22v14M24 22v14"/>'
+};
+const svg = k => `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">${ICONS[k]}</svg>`;
+const TYPES = { 3: "3★", 4: "4★", 5: "5★" };
+
+/* ============================================================ */
+const $ = s => document.querySelector(s);
+const app = $("#app");
+const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+const vibrate = p => { try { navigator.vibrate && navigator.vibrate(p); } catch (e) {} };
+const KEY = "molitva.v1";
+let done = false;
+try { done = localStorage.getItem(KEY) === "done"; if (/reset/.test(location.search + location.hash)) { localStorage.removeItem(KEY); done = false; } } catch (e) {}
+
+/* ---------- sound: synthesized chimes ---------- */
+const FX = (() => {
+  let ctx = null, master = null, noise = null, muted = false;
+  function init() {
+    if (ctx) { if (ctx.state === "suspended") ctx.resume(); return; }
+    try {
+      try { if (navigator.audioSession) navigator.audioSession.type = "playback"; } catch (e) {}
+      ctx = new (window.AudioContext || window.webkitAudioContext)();
+      master = ctx.createGain(); master.gain.value = muted ? 0 : .8; master.connect(ctx.destination);
+      const len = ctx.sampleRate * 2; noise = ctx.createBuffer(1, len, ctx.sampleRate);
+      const d = noise.getChannelData(0); for (let i = 0; i < len; i++) d[i] = Math.random() * 2 - 1;
+    } catch (e) { ctx = null; }
+  }
+  function note(f, t0, dur, peak = .12, type = "sine") {
+    if (!ctx) return;
+    const t = ctx.currentTime + t0, o = ctx.createOscillator(), g = ctx.createGain();
+    o.type = type; o.frequency.value = f;
+    g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime(peak, t + .01); g.gain.exponentialRampToValueAtTime(.0001, t + dur);
+    o.connect(g); g.connect(master); o.start(t); o.stop(t + dur + .05);
+  }
+  return {
+    init,
+    whoosh(d = 1.4) {
+      if (!ctx) return;
+      const t = ctx.currentTime, s = ctx.createBufferSource(), f = ctx.createBiquadFilter(), g = ctx.createGain();
+      s.buffer = noise; s.loop = true; f.type = "bandpass"; f.Q.value = 1.2;
+      f.frequency.setValueAtTime(400, t); f.frequency.exponentialRampToValueAtTime(5000, t + d * .8);
+      g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime(.35, t + d * .7); g.gain.exponentialRampToValueAtTime(.0001, t + d);
+      s.connect(f); f.connect(g); g.connect(master); s.start(t); s.stop(t + d + .1);
+    },
+    chime(r) {
+      if (r === 3) { note(659.25, 0, .5); note(987.77, .09, .7); }
+      if (r === 4) { [523.25, 659.25, 783.99, 1046.5].forEach((f, i) => note(f, i * .08, .9, .1, "triangle")); }
+      if (r === 5) {
+        [261.63, 329.63, 392, 523.25].forEach(f => note(f, 0, 2.6, .07, "triangle"));
+        [783.99, 987.77, 1174.66, 1567.98, 1975.53].forEach((f, i) => note(f, .15 + i * .09, 1.6, .06));
+        for (let i = 0; i < 10; i++) note(2000 + Math.random() * 2500, .5 + Math.random() * 1.4, .25, .02);
+      }
+    },
+    tick() { note(1400, 0, .06, .04); },
+    toggle() { muted = !muted; if (master) master.gain.setTargetAtTime(muted ? 0 : .8, ctx.currentTime, .05); return muted; }
+  };
+})();
+$("#mute").addEventListener("click", () => { FX.init(); const m = FX.toggle(); $("#mute").classList.toggle("muted", m); $("#mute").setAttribute("aria-label", m ? "Включить звук" : "Выключить звук"); });
+
+/* ---------- starfield ---------- */
+(() => {
+  const cv = $("#sky"), g = cv.getContext("2d");
+  let W, H, stars = [], shoot = null;
+  function size() {
+    const r = app.getBoundingClientRect(), dpr = Math.min(2, devicePixelRatio || 1);
+    W = r.width; H = r.height; cv.width = W * dpr; cv.height = H * dpr; g.setTransform(dpr, 0, 0, dpr, 0, 0);
+    stars = Array.from({ length: Math.round(W * H / 2600) }, () => ({ x: Math.random() * W, y: Math.random() * H, r: Math.random() * 1.3 + .2, p: Math.random() * 6, s: .5 + Math.random() * 1.5 }));
+  }
+  size(); addEventListener("resize", size);
+  (function f(t) {
+    g.clearRect(0, 0, W, H);
+    for (const s of stars) { const a = .35 + .65 * Math.abs(Math.sin(s.p + t / 1000 * s.s)); g.globalAlpha = reduced ? .7 : a; g.fillStyle = "#fff6e0"; g.beginPath(); g.arc(s.x, s.y, s.r, 0, 7); g.fill(); }
+    g.globalAlpha = 1;
+    if (!reduced) {
+      if (!shoot && Math.random() < .004) shoot = { x: Math.random() * W, y: Math.random() * H * .4, l: 0 };
+      if (shoot) {
+        shoot.l += 1; const len = 70, x = shoot.x + shoot.l * 6, y = shoot.y + shoot.l * 2.6;
+        const gr = g.createLinearGradient(x - len, y - len * .43, x, y); gr.addColorStop(0, "#fff0"); gr.addColorStop(1, "#fff");
+        g.strokeStyle = gr; g.lineWidth = 1.4; g.beginPath(); g.moveTo(x - len, y - len * .43); g.lineTo(x, y); g.stroke();
+        if (shoot.l > 40) shoot = null;
+      }
+    }
+    requestAnimationFrame(f);
+  })(0);
+})();
+
+/* ---------- scenes ---------- */
+let current = null;
+function go(id) {
+  if (current) current.classList.remove("on");
+  current = document.getElementById(id); current.classList.add("on");
+}
+
+/* banner */
+function showBanner() {
+  $("#fates").textContent = done ? "0" : "10";
+  $("#go").hidden = done; $("#toSummary").hidden = !done;
+  go("banner");
+}
+$("#go").addEventListener("click", async () => {
+  FX.init(); vibrate(30);
+  $("#fates").textContent = "0";
+  go("wish");
+  const m = $("#meteor"), fl = $("#flashm");
+  m.style.setProperty("--m", "#ffd77a"); fl.style.setProperty("--m", "#ffd77a");
+  [m, fl].forEach(el => { el.classList.remove("go"); void el.offsetWidth; el.classList.add("go"); });
+  FX.whoosh(1.5);
+  await sleep(reduced ? 200 : 2100);
+  idx = 0; showItem();
+});
+$("#toSummary").addEventListener("click", () => { buildSummary(); go("summary"); });
+
+/* reveal */
+let idx = 0, ready = false;
+async function showItem() {
+  const it = ITEMS[idx], sc = $("#reveal");
+  go("reveal");
+  ready = false;
+  sc.classList.remove("r3", "r4", "r5"); sc.classList.add("r" + it.r);
+  $("#counter").textContent = `${idx + 1} / ${ITEMS.length}`;
+  const glow = $("#glow"); glow.innerHTML = svg(it.icon); glow.classList.remove("item-in"); void glow.offsetWidth; glow.classList.add("item-in");
+  $("#itype").textContent = it.type; $("#iname").textContent = it.name; $("#idesc").textContent = "";
+  $("#tapnext").classList.remove("on");
+  $("#rstars").innerHTML = "";
+  FX.chime(it.r); vibrate(it.r === 5 ? [60, 40, 120] : 25);
+  for (let i = 0; i < it.r; i++) {
+    const s = document.createElement("i"); s.textContent = "★"; s.style.animationDelay = (reduced ? 0 : .25 + i * .12) + "s"; $("#rstars").appendChild(s);
+  }
+  await sleep(reduced ? 0 : 450);
+  // текст печатается быстро
+  const d = it.desc, el = $("#idesc"), my = idx;
+  for (let i = 1; i <= d.length; i++) {
+    if (my !== idx || ready) break;
+    el.textContent = d.slice(0, i);
+    if (i % 3 === 0) FX.tick();
+    await sleep(reduced ? 0 : 14);
+  }
+  if (my !== idx) return;
+  el.textContent = d; ready = true;
+  $("#tapnext").textContent = idx === ITEMS.length - 1 ? "Нажми, чтобы увидеть итоги" : "Нажми, чтобы продолжить";
+  $("#tapnext").classList.add("on");
+}
+$("#reveal").addEventListener("click", e => {
+  if (e.target.closest("#skip")) return;
+  if (!ready) { ready = true; $("#idesc").textContent = ITEMS[idx].desc; $("#tapnext").classList.add("on"); return; }
+  if (idx < ITEMS.length - 1) { idx++; showItem(); } else finish();
+});
+$("#skip").addEventListener("click", () => { idx = ITEMS.length - 1; showItem(); });
+function finish() {
+  done = true; try { localStorage.setItem(KEY, "done"); } catch (e) {}
+  buildSummary(); go("summary");
+}
+
+/* summary */
+function buildSummary() {
+  const sorted = ITEMS.map((it, i) => ({ ...it, i })).sort((a, b) => b.r - a.r);
+  $("#grid").innerHTML = sorted.map(it => `<button class="cell r${it.r}" data-i="${it.i}">${svg(it.icon)}<i>${"★".repeat(it.r)}</i><b>${it.name}</b></button>`).join("");
+}
+$("#grid").addEventListener("click", e => {
+  const c = e.target.closest(".cell"); if (!c) return;
+  const it = ITEMS[+c.dataset.i];
+  $("#mIcon").innerHTML = svg(it.icon); $("#mIcon").style.color = `var(--${it.r === 5 ? "gold" : it.r === 4 ? "purple" : "blue"})`;
+  $("#mStars").textContent = "★".repeat(it.r); $("#mStars").style.color = $("#mIcon").style.color;
+  $("#mName").textContent = it.name; $("#mDesc").textContent = it.desc;
+  $("#modal").classList.add("on"); FX.init(); FX.tick();
+});
+$("#mClose").addEventListener("click", () => $("#modal").classList.remove("on"));
+$("#modal").addEventListener("click", e => { if (e.target.id === "modal") $("#modal").classList.remove("on"); });
+
+/* letter */
+$("#paper").innerHTML = CONFIG.letter.map(p => `<p>${p}</p>`).join("") + `<p class="sign">${CONFIG.from}</p>`;
+$("#toLetter").addEventListener("click", () => { FX.init(); FX.chime(4); go("letter"); $("#letter").scrollTop = 0; });
+$("#again").addEventListener("click", () => {
+  done = false; try { localStorage.removeItem(KEY); } catch (e) {}
+  showBanner();
+});
+
+showBanner();
+</script>
+</body>
+</html>
